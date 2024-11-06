@@ -1,0 +1,11 @@
+FROM ${baseImage}
+
+RUN groupadd ${group} && useradd -g ${group} ${user}
+USER ${group}:${user}
+
+ARG DEPENDENCY=target/dependency
+COPY ${r"${DEPENDENCY}"}/BOOT-INF/lib app/lib
+COPY ${r"${DEPENDENCY}"}/META-INF/ app/META-INF
+COPY ${r"${DEPENDENCY}"}/BOOT-INF/classes /app
+
+ENTRYPOINT ["java", "-cp", "app:app/lib/*", "${mainClass}"]
