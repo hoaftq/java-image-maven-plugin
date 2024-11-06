@@ -54,6 +54,7 @@
                         <mainClass>
                             hoaftq.example.spring_image_maven_plugin_example.SpringImageMavenPluginExampleApplication
                         </mainClass>
+                        <imageTag>hoaftq/spring-image-maven-plugin-example</imageTag>
                     </configuration>
                 </plugin>
             </plugins>
@@ -63,7 +64,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>hoaftq.spring_image</groupId>
+                <artifactId>spring-image-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>docker-file</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generateDockerfile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>docker-image</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>buildImage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>

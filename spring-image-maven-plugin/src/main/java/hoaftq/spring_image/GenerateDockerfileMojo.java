@@ -9,7 +9,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 import java.io.*;
 
-@Mojo(name = "generateDockerfile", defaultPhase = LifecyclePhase.PACKAGE)
+@Mojo(name = "generateDockerfile", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class GenerateDockerfileMojo extends AbstractMojo {
 
     @Parameter(property = "baseImage", required = true)
